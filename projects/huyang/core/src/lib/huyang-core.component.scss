@@ -1,0 +1,84 @@
+header, main, footer {
+  padding-left: 320px;
+}
+
+.panel {
+  width: 275px;
+  margin-top: 26px;
+  background-color: lightgrey;
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  display: inline-block;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  scrollbar-base-color: #bdbdbd;
+  scrollbar-track-color: #E0E0E0;
+  scrollbar-arrow-color: #E0E0E0;
+
+  .sidenav-header {
+    width: 100%;
+    //overflow: hidden;
+    margin: 10px 0;
+
+    h1 {
+      font-size: 22px;
+      line-height: 35px;
+      color: #555;
+      background: none;
+      margin: 0 0 0 14px;
+      padding: 0;
+    }
+
+  }
+}
+
+#panel::-webkit-scrollbar-thumb {
+  background: #bdbdbd;
+}
+
+#panel::-webkit-scrollbar {
+  background: transparent;
+  width: 8px;
+}
+
+/* Recent History */
+.account-and-recent-history {
+  margin: 0 0 20px 14px;
+
+
+  h4 {
+    padding-bottom: 5px;
+    display: inline-block;
+    position: relative;
+    color: #555;
+
+    mat-icon {
+      color: #D76371;
+      margin-right: 17px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+  }
+
+
+  ul li {
+    cursor: pointer;
+    list-style-type: none;
+
+
+    .list{
+
+
+      a {
+        width: 234px;
+        display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+
+}

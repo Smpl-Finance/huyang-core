@@ -1,0 +1,47 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "traceResolution": false,
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "module": "es2020",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2015",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "paths": {
+      "@huyang/core": [
+        "dist/huyang/core"
+      ],
+      "@huyang/core/*": [
+        "dist/huyang/core/*"
+      ],
+      "huyang-core-test-content": [
+        "dist/huyang-core-test-content"
+      ],
+      "huyang-core-test-content/*": [
+        "dist/huyang-core-test-content/*"
+      ],
+      "huyang-endor": [
+        "dist/huyang-endor"
+      ],
+      "huyang-endor/*": [
+        "dist/huyang-endor/*"
+      ]
+    }
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true
+  }
+}

@@ -1,0 +1,58 @@
+<ul class="navbar-nav ml-lg-auto mx-auto mx-lg-0">
+  <ng-container *ngFor="let link of links">
+    <li class="nav-item ml-lg-auto mx-auto mx-lg-0" *ngIf="!link.menu">
+      <a
+        class="nav-link"
+        [ngClass]="link.class ? link.class : ''"
+        [routerLink]="link.url"
+      >
+        <ng-container *ngIf="!link.icon">
+          {{ link.title }}
+        </ng-container>
+        <ng-container *ngIf="link.icon">
+          <fa-icon [icon]="link.icon" size="lg"></fa-icon>
+        </ng-container>
+      </a>
+    </li>
+    <li class="nav-item ml-lg-auto mx-auto mx-lg-0 dropdown" *ngIf="link.menu">
+      <a
+        class="nav-link dropdown-toggle"
+        href="#"
+        id="{{ link.title.replace(' ', '_') }}Dropdown"
+        role="button"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        {{ link.title }}
+      </a>
+      <div class="dropdown-menu" aria-labelledby="Dropdown">
+        <ng-container *ngFor="let ll of link.menu">
+          <a class="dropdown-item" [routerLink]="ll.url">
+            <ng-container *ngIf="!ll.icon">
+              {{ ll.title }}
+            </ng-container>
+            <ng-container *ngIf="ll.icon">
+              <fa-icon [icon]="ll.icon" size="lg"></fa-icon>
+            </ng-container>
+          </a>
+        </ng-container>
+      </div>
+    </li>
+  </ng-container>
+  <li class="nav-item ml-lg-auto mx-auto mx-lg-0" *ngIf="user">
+    <a class="nav-link" [routerLink]="['/']">
+      {{user.firstName + ' ' + user.lastName}}
+    </a>
+  </li>
+  <li class="nav-item ml-lg-auto mx-auto mx-lg-0">
+    <a class="nav-link" [routerLink]="['/']" >
+      <fa-icon [icon]="loginLogoutIcon" size="lg"></fa-icon>
+    </a>
+  </li>
+  <li class="nav-item ml-lg-auto mx-auto mx-lg-0">
+    <a class="nav-link" [routerLink]="['/']">
+      <fa-icon [icon]="settingsIcon" size="lg"></fa-icon>
+    </a>
+  </li>
+</ul>

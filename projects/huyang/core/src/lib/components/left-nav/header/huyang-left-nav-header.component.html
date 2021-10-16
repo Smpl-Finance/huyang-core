@@ -1,0 +1,35 @@
+<div class="header-container container">
+  <div class="row">
+    <div class="col-2">
+      <a class="btn btn-link" (click)="toggleFeature(openFeature)">
+        <fa-icon [icon]="featureIcon" size="sm"></fa-icon>
+      </a>
+    </div>
+    <ng-container *ngFor="let link of headerLinks">
+      <ng-container *ngIf="link.url">
+        <div class="col-2">
+          <a class="btn btn-link" [routerLink]="link.url">
+            <ng-container *ngIf="link.iconBtn">
+              <fa-icon [icon]="link.icon"></fa-icon>
+            </ng-container>
+            <ng-container *ngIf="link.titleBtn">
+              {{ link.title }}
+            </ng-container>
+          </a>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="link.click">
+        <div class="col-2">
+          <a class="btn btn-link" (click)="link.click($event)">
+            <ng-container *ngIf="link.iconBtn">
+              <fa-icon [icon]="link.icon"></fa-icon>
+            </ng-container>
+            <ng-container *ngIf="link.titleBtn">
+              {{ link.title }}
+            </ng-container>
+          </a>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>

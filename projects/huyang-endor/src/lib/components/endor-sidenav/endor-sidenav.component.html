@@ -1,0 +1,15 @@
+<mat-card>
+  <div *ngIf="showProfile">
+    <mat-card class="avatar-card card-center">
+      <img class="avatar card-center" [src]="(profile | async)?.url"/>
+    </mat-card>
+    <mat-card>
+      <mat-grid-list cols="2" rowHeight="3:1">
+        <mat-grid-tile><b>First Name: </b></mat-grid-tile>
+        <mat-grid-tile>{{(profile | async)?.firstName}}</mat-grid-tile>
+        <mat-grid-tile><b>Last Name:</b></mat-grid-tile>
+        <mat-grid-tile>{{(profile | async)?.lastName}}</mat-grid-tile>
+      </mat-grid-list>
+    </mat-card>
+  </div>
+</mat-card>

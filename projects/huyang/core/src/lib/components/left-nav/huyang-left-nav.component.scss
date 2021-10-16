@@ -1,0 +1,11 @@
+.leftnav-container {
+  position: fixed;
+  left: 0%;
+  width: 300px;
+  transition: left 0.5s;
+  box-shadow: 1px 5px 10px 3px #ccc;
+}
+
+.leftnav-container:not(.show) {
+  left: -100%;
+}

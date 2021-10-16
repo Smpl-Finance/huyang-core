@@ -1,0 +1,14 @@
+
+<div>
+  <h1>Tree</h1>
+
+  <div>{{message}}</div>
+
+  <s2w-angular-d3-tree-lib
+    [(treeData)]="data"
+    (onNodeChanged)="nodeUpdated($event)"
+    (onNodeSelected)="nodeSelected($event)"
+    class="center">
+  </s2w-angular-d3-tree-lib>
+
+</div>

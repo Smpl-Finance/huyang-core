@@ -1,0 +1,17 @@
+<div
+  class="leftnav-container p-2"
+  [ngClass]="(showLeftNav$ | async) ? 'show' : ''"
+  [ngStyle]="getStyles()"
+>
+  <leftnav-header
+    [links]="headerLinks$ | async"
+    [openFeature]="showFeature$ | async"
+    (changeFeature)="toggleFeature($event)"
+  ></leftnav-header>
+  <leftnav-history-content
+    *ngIf="(showFeature$ | async) === 'history'"
+  ></leftnav-history-content>
+  <leftnav-module-content
+    *ngIf="(showFeature$ | async) === 'module'"
+  ></leftnav-module-content>
+</div>

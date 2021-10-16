@@ -1,0 +1,258 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "@huyang/core": {
+      "projectType": "library",
+      "root": "projects/huyang/core",
+      "sourceRoot": "projects/huyang/core/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/huyang/core/tsconfig.lib.json",
+            "project": "projects/huyang/core/ng-package.json"
+          }
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/huyang/core/tsconfig.lib.prod.json"
+            }
+          }
+},
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/huyang/core/src/test.ts",
+            "tsConfig": "projects/huyang/core/tsconfig.spec.json",
+            "karmaConfig": "projects/huyang/core/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/huyang/core/tsconfig.lib.json",
+              "projects/huyang/core/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "huyang-core-showcase": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/huyang-core-showcase",
+      "sourceRoot": "projects/huyang-core-showcase/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/huyang-core-showcase",
+            "index": "projects/huyang-core-showcase/src/index.html",
+            "main": "projects/huyang-core-showcase/src/main.ts",
+            "polyfills": "projects/huyang-core-showcase/src/polyfills.ts",
+            "tsConfig": "projects/huyang-core-showcase/tsconfig.app.json",
+            "assets": [
+              "projects/huyang-core-showcase/src/favicon.ico",
+              "projects/huyang-core-showcase/src/assets"
+            ],
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "projects/huyang-core-showcase/src/styles.scss"
+            ],
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/huyang-core-showcase/src/environments/environment.ts",
+                  "with": "projects/huyang-core-showcase/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          },
+          "defaultConfiguration": ""
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "huyang-core-showcase:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "huyang-core-showcase:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "huyang-core-showcase:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/huyang-core-showcase/src/test.ts",
+            "polyfills": "projects/huyang-core-showcase/src/polyfills.ts",
+            "tsConfig": "projects/huyang-core-showcase/tsconfig.spec.json",
+            "karmaConfig": "projects/huyang-core-showcase/karma.conf.js",
+            "assets": [
+              "projects/huyang-core-showcase/src/favicon.ico",
+              "projects/huyang-core-showcase/src/assets"
+            ],
+            "styles": [
+              "projects/huyang-core-showcase/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/huyang-core-showcase/tsconfig.app.json",
+              "projects/huyang-core-showcase/tsconfig.spec.json",
+              "projects/huyang-core-showcase/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/huyang-core-showcase/e2e/protractor.conf.js",
+            "devServerTarget": "huyang-core-showcase:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "huyang-core-showcase:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "huyang-core-test-content": {
+      "projectType": "library",
+      "root": "projects/huyang-core-test-content",
+      "sourceRoot": "projects/huyang-core-test-content/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/huyang-core-test-content/tsconfig.lib.json",
+            "project": "projects/huyang-core-test-content/ng-package.json"
+          }
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/huyang-core-test-content/tsconfig.lib.prod.json"
+            }
+          }
+},
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/huyang-core-test-content/src/test.ts",
+            "tsConfig": "projects/huyang-core-test-content/tsconfig.spec.json",
+            "karmaConfig": "projects/huyang-core-test-content/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/huyang-core-test-content/tsconfig.lib.json",
+              "projects/huyang-core-test-content/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "huyang-endor": {
+      "projectType": "library",
+      "root": "projects/huyang-endor",
+      "sourceRoot": "projects/huyang-endor/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/huyang-endor/tsconfig.lib.json",
+            "project": "projects/huyang-endor/ng-package.json"
+          }
+        ,          "configurations": {
+            "production": {
+              "tsConfig": "projects/huyang-endor/tsconfig.lib.prod.json"
+            }
+          }
+},
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/huyang-endor/src/test.ts",
+            "tsConfig": "projects/huyang-endor/tsconfig.spec.json",
+            "karmaConfig": "projects/huyang-endor/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/huyang-endor/tsconfig.lib.json",
+              "projects/huyang-endor/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "@huyang/core",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
+}

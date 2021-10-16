@@ -1,0 +1,5 @@
+<p>test-sidenav works!</p>
+
+<div *ngFor="let menuItem of menuItems | async">
+  <a [href]="menuItem.url">{{menuItem.label}}</a>
+</div>

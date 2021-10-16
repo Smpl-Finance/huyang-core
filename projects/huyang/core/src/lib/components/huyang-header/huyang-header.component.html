@@ -1,0 +1,45 @@
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary" #navbar>
+  <!-- Button and link below should be in the shared-header-logo -->
+  <header-left
+    class="logo"
+    [title]="title$ | async"
+    [logoImage]="logo$ | async"
+    [leftNavOpen]="leftnavOpen$ | async"
+    (leftNavCollapse)="toggleLeftnav($event)"
+  ></header-left>
+  <!-- All collapsible menu below should be made of shared-header-search and shared-header-links -->
+  <button
+    class="navbar-toggler btn btn-outline-white"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarMain"
+    aria-controls="navbarMain"
+    aria-expanded="false"
+    aria-label="Toggle Navigation"
+    (click)="toggleMobileMenu((mobileMenu = !mobileMenu))"
+  >
+    <i class="fas {{ searchCollapseIcon }} fa-lg"></i>
+  </button>
+  <div
+    class="collapse navbar-collapse"
+    id="navbarMain"
+    [ngbCollapse]="mobileMenuOpen$ | async"
+  >
+    <div class="row w-100">
+      <div class="col-md-7 col-sm-8 col-12">
+        <header-center
+          class="search mx-auto mx-lg-0"
+          [searchOptions]="searchParams$ | async"
+          (search)="headerSearch($event)"
+        ></header-center>
+      </div>
+      <div class="col-md-5 col-sm-4 col-12">
+        <header-right
+          class="float-lg-right ml-lg-auto mx-auto mx-lg-0 links"
+          [links]="links$ | async"
+          [user]="user$ | async"
+        ></header-right>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,3 @@
+<div *ngFor="let module of appModules | async">
+  <a routerLink="{{module.rootPath}}">{{module.homeComponent?.name}}</a>
+</div>

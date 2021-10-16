@@ -1,0 +1,12 @@
+<button
+  class="leftnav-toggler btn btn-link"
+  type="button"
+  aria-label="Toggle Left Nav"
+  (click)="collapseLeftMenu()"
+>
+  <fa-icon [icon]="leftNavCollapseIcon" size="lg"></fa-icon>
+</button>
+<a class="navbar-brand" [routerLink]="['/']">
+  <img *ngIf="logoImage" alt="{{ title }}" src="{{ logoImage }}" />
+  <span *ngIf="!logoImage">{{ title }}</span>
+</a>
